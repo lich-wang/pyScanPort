@@ -1,7 +1,10 @@
+# -*- coding: utf8 -*-
 
 from threading import Thread, activeCount
 import socket
 import os
+
+#测试ip和端口是否开放
 def test_port(dst,port):
     os.system('title '+str(port))
 
@@ -16,10 +19,12 @@ def test_port(dst,port):
         
         pass
 
-if __name__=='__main__':
-    dst = '202.119.160.145'
 
+if __name__=='__main__':
+    #扫描ip
+    dst = '202.119.160.145'
     i = 0
+    #20线程，扫描0~100端口
     while i < 100:
         if activeCount() <= 20:
             Thread(target = test_port, args = (dst, i)).start()
